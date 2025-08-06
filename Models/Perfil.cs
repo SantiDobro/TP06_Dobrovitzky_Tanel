@@ -5,17 +5,19 @@ public class Perfil
 {
     public string Usuario { get; set; }
     public string Contraseña { get; set; }
-    public string Nacimiento { get; set; }
+    public DateTime Nacimiento { get; set; }
 
     public Perfil() { }
 
-    public static void AgregarPerfil(string NuevoUsuario, string NuevaContraseña, string NuevoNacimiento)
+    public static int AgregarPerfil(string NuevoUsuario, string NuevaContraseña, DateTime NuevoNacimiento)
     {
-        string query = "Insert Into Perfil(Usuario, Contraseña, Nacimiento) Values (NuevoUsuario, NuevaContraseña, NuevoNacimiento)";
+        string query = "Insert Into Perfil(Usuario, Contraseña, Nacimiento) Values (@NuevoUsuario, @NuevaContraseña, @NuevoNacimiento)";
+        int registrosafectados = 0;
         using (SqlConnection connection = BD.ObtenerConexion())
         {
-            connection.Execute(query, new {Usuario = NuevoUsuario, Contraseña = NuevaContraseña, Nacimiento = NuevoNacimiento});
+          registrosafectados = connection.Execute(query, new { NuevoUsuario = NuevoUsuario, NuevaContraseña = NuevaContraseña, NuevoNacimiento = NuevoNacimiento });
         }
+        return registrosafectados;
     }
     public static Perfil LevantarPerfil(string Usuario, string Contraseña)
     {

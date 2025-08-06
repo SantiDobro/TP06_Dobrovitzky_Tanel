@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Inicio de sesión";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="title">Bienvenido</h1>
+        <p class="subtitle">Por favor, inicia sesión para continuar</p>
+        <form action='@Url.Action("login", "Home")' method="post" class="login-form">
+            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="password" name="contraseña" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+            @if (ViewBag.Error != null)
+            {
+                <div class="error-message">@ViewBag.Error</div>
+            }
+        </form>
+        <div class="extras">
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <a href="CrearCuenta">Crear cuenta nueva</a>
+        </div>
+    </div>
+</body>
+</html>

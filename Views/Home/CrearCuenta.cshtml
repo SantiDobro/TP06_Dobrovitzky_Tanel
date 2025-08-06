@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Crear Cuenta";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Cuenta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1 class="title">Crear una cuenta</h1>
+        <p class="subtitle">Completa el formulario para registrarte</p>
+        <form action='@Url.Action("Register", "Home")' method="post" class="login-form">
+            <input type="text" name="usuario" placeholder="Usuario" required>
+            <input type="password" name="contraseña" placeholder="Contraseña" required>
+            <input type="date" name="nacimiento" placeholder="Fecha de nacimiento" required>
+            <button type="submit">Registrarse</button>
+        </form>
+        <div class="extras">
+            <a href="@Url.Action("IniciarSesion", "Home")">¿Ya tenés cuenta? Iniciá sesión</a>
+        </div>
+    </div>
+</body>
+</html>

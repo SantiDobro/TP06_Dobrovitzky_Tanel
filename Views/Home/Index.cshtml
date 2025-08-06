@@ -1,8 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Inicio";
 }
 
-<div>
-    <h1>Index</h1>
-    <p>Bienvenidos al sitio web de NombreProyecto</p>
+<div class="main-container">
+    @if (Model != null)
+    {
+        <div class="card perfil-card">
+            <h2>Bienvenido, <span class="highlight">@Model.Usuario</span> 👋</h2>
+            <ul class="info-list">
+            </ul>
+            <a href="@Url.Action("CerrarSesion", "Home")" class="btn">Cerrar sesión</a>
+        </div>
+    }
+    else
+    {
+        <div class="card">
+            <h2>No has iniciado sesión</h2>
+            <p>Para ver tu perfil, primero iniciá sesión.</p>
+            <a href="@Url.Action("IniciarSesion", "Home")" class="btn">Iniciar sesión</a>
+        </div>
+    }
 </div>
