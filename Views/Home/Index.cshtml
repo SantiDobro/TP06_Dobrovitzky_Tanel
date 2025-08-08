@@ -9,6 +9,21 @@
             <h2>Bienvenido, <span class="highlight">@Model.Usuario</span> 👋</h2>
             <ul class="info-list">
             </ul>
+
+            <nav>
+                <a href="@Url.Action("Crear", "Tarea")">Agregar una tarea</a>
+            </nav>
+
+            <h1>
+            <ul>
+             <li>   <a href="@Url.Action("Eliminar", "Tarea")">Eliminar tarea</a></li> <br>
+             <li>   <a href="@Url.Action("Editar", "Tarea")">Editar tarea</a></li> <br>
+             <li>   <a href="@Url.Action("Index", "Tarea")">Mostrar todas las tareas activas</a></li> <br>
+             <li>   <a href="@Url.Action("MarcarFinalizada", "Tarea")">Marcar tarea como finalizada</a></li> <br>
+             <li>   <a href="@Url.Action("Compartir", "Tarea")">Compartir tarea con N usuarios</a></li>
+            </ul>
+            </h1>
+
             <a href="@Url.Action("CerrarSesion", "Home")" class="btn">Cerrar sesión</a>
         </div>
     }
