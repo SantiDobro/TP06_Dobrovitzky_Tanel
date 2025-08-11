@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TP06_Dobrovitzky_Tanel")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb1b08835929b17c6100dd07bbc777f185b89916")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84d525f223fb46d534aa413aa55964f68115ed60")]
 [assembly: System.Reflection.AssemblyProductAttribute("TP06_Dobrovitzky_Tanel")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TP06_Dobrovitzky_Tanel")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
