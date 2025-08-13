@@ -37,7 +37,6 @@ public class HomeController : Controller
     public IActionResult Login(string usuario, string contraseña)
     {
         var perfil = Perfil.LevantarPerfil(usuario, contraseña);
-
         if (perfil != null)
         {
             HttpContext.Session.SetString("Usuario", perfil.Usuario);
@@ -49,8 +48,6 @@ public class HomeController : Controller
             return View("IniciarSesion");
         }
     }
-
-    [HttpPost]
     [HttpPost]
 public IActionResult Register(string usuario, string contraseña, DateTime nacimiento)
 {

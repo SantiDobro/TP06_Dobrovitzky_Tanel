@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5ItRJzfAMUKiVYvR+MulxNHHV+FeXlhp1KqslrItTlSBVznZfdXcwSC/l/c4hSoQ4hZqbD0ePehOHR3nuJMZAA==",
+  "dgSpecHash": "tvsNhwCmPVzMFGr1pUEeM1ODF3cdvHIcP7rMWshxqWAvtmQzRj8XvErxJRQ8E6agw56OYKNs7RjLIXxFge/BVg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\49123993\\TP06_Dobrovitzky_Tanel\\TP06_Dobrovitzky_Tanel.csproj",
+  "projectFilePath": "Z:\\TP06_Dobrovitzky_Tanel\\TP06_Dobrovitzky_Tanel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\49123993\\.nuget\\packages\\azure.core\\1.44.1\\azure.core.1.44.1.nupkg.sha512",
     "C:\\Users\\49123993\\.nuget\\packages\\azure.identity\\1.13.2\\azure.identity.1.13.2.nupkg.sha512",

@@ -23,11 +23,52 @@ public static class BD
     {
         using (SqlConnection connection = ObtenerConexion())
         {
-            var IDCategoria = "SELECT IDCategoria from Tareas INNER JOIN Categoria ON Tareas.IDCategoria = Categoria.ID WHERE Categoria.Nombre = @nombre";
-            var query = "INSERT INTO Tareas (Nombre, Fecha, IDCategoria) VALUES (@nombre, @fecha, @IDCategoria)";
-            var tarea = connection.QueryFirstOrDefault<Tarea>(query);
+            int idCategoria = connection.QueryFirstOrDefault<int>(
+                "SELECT ID FROM Categoria WHERE Nombre = @categoria",
+                new { categoria }
+            );
+
+            if (idCategoria == 0)
+            {
+                idCategoria = connection.QuerySingle<int>(
+                    "INSERT INTO Categoria (Nombre) VALUES (@categoria); SELECT CAST(SCOPE_IDENTITY() AS int);",
+                    new { categoria }
+                );
+            }
+
+            connection.Execute(
+                "INSERT INTO Tareas (Nombre, Fecha, IDCategoria, Activa) VALUES (@nombre, @fecha, @idCategoria, 1)",
+                new { nombre, fecha, idCategoria }
+            );
+
+            Tarea tarea = new Tarea
+            {
+                Nombre = nombre,
+                Fecha = fecha,
+                IDCategoria = idCategoria,
+                Activa = true
+            };
+
             return tarea;
+        }
+    }
+    public static List<string> DevolverCategorias()
+    {
+        using (SqlConnection connection = ObtenerConexion())
+        {
+            var query = "SELECT Nombre FROM Categoria";
+            var categorias = connection.Query<string>(query).ToList();
+            return categorias;
         }
         return null;
     }
+    public static void InsertarCategoria(string nombre)
+    {
+        using (SqlConnection connection = ObtenerConexion())
+        {
+            var query = "INSERT INTO Categoria (Nombre) VALUES (@nombre)";
+            connection.Execute(query, new { nombre });
+        }
+    }
+
 }

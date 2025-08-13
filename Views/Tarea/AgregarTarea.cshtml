@@ -1,0 +1,55 @@
+@{
+    ViewData["Title"] = "Agregar Tarea";
+    var listaCategorias = ViewBag.Categorias as List<string>;
+}
+
+<div class="login-container">
+    <h1 class="title">Agregar una nueva tarea</h1>
+    <p class="subtitle">Completa la información para crear la tarea</p>
+
+    <form asp-action="InsertarTarea" asp-controller="Tarea" method="post" class="login-form">
+        <input type="text" name="nombre" placeholder="Título de la tarea" required />
+        <input type="date" name="fecha" placeholder="Fecha de vencimiento" required />
+
+        
+@if (TempData["MensajeExito"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensajeExito"]
+    </div>
+}
+        <select id="categoriaSelect" name="categoria">
+            @if(listaCategorias != null)
+            {
+                foreach(var cat in listaCategorias)
+                {
+                    <option value="@cat">@cat</option>
+                }
+            }
+            <option value="agregar">Agregar categoría</option>
+        </select>
+
+        <div id="nuevaCategoriaContainer" style="display:none; margin-top:10px;">
+            <input type="text" name="nuevaCategoria" placeholder="Nombre nueva categoría" />
+        </div>
+
+        <button type="submit" style="margin-top:10px;">Guardar Tarea</button>
+    </form>
+
+    <div class="extras">
+        <a asp-action="Index" asp-controller="Home">Volver al inicio</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var selectCategoria = document.getElementById("categoriaSelect");
+            var nuevaDiv = document.getElementById("nuevaCategoriaContainer");
+
+            selectCategoria.addEventListener("change", function () {
+                nuevaDiv.style.display = (this.value === "agregar") ? "block" : "none";
+            });
+        });
+    </script>
+}
